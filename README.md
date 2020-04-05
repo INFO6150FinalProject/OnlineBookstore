@@ -10,7 +10,11 @@ Description
 * Navigate to server directory
 * npm install to install all required dependencies
 * npm start to start the local server
-
+* create .env file under server directory, for example:
+```
+DATABASE=mongodb://localhost/yourDatabaseName
+PORT=8000
+```
 ### To get the React server running locally:
 
 * Navigate to client directory
