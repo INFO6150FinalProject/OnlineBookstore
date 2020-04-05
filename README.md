@@ -45,8 +45,8 @@ Description
 
 
 ### General functionality:
-Sign Up
-Log In
+* Sign Up
+* Log In
 
 ### The general page breakdown looks like this:
 
