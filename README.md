@@ -10,7 +10,7 @@ Description
 * Navigate to server directory
 * npm install to install all required dependencies
 * npm start to start the local server
-* create .env file under server directory, for example:
+* Create .env file under server directory, for example:
 ```
 DATABASE=mongodb://localhost/yourDatabaseName
 PORT=8000
