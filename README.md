@@ -1,24 +1,21 @@
 # OnlineBookstore
-
-
-# Online bookstore
-
+Description
 
 ## Getting Started
 
 ### To get the Node server running locally:
 
-Install MongoDB Community Edition (instructions) and run it by executing mongod
-Clone this repo
-Navigate to server directory
-npm install to install all required dependencies
-npm start to start the local server
+* Install MongoDB Community Edition (instructions) and run it by executing mongod
+* Clone this repo
+* Navigate to server directory
+* npm install to install all required dependencies
+* npm start to start the local server
 
 ### To get the React server running locally:
 
-Navigate to client directory
-npm install to install all required dependencies
-npm start to start the local server
+* Navigate to client directory
+* npm install to install all required dependencies
+* npm start to start the local server
 
 ## Application Structure
 
@@ -48,7 +45,8 @@ npm start to start the local server
 
 
 ### General functionality:
-
+Sign Up
+Log In
 
 ### The general page breakdown looks like this:
 
