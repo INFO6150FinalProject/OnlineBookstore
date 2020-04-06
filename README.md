@@ -9,12 +9,13 @@ Description
 * Clone this repo
 * Navigate to server directory
 * npm install to install all required dependencies
-* npm start to start the local server
 * Create .env file under server directory, for example:
 ```
 DATABASE=mongodb://localhost/yourDatabaseName
 PORT=8000
 ```
+* npm start to start the local server
+
 ### To get the React server running locally:
 
 * Navigate to client directory
