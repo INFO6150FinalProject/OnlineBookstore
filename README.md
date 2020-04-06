@@ -52,7 +52,7 @@ PORT=8000
 ### General functionality:
 * Sign Up
 * Log In
-
+* Display Product
 ### The general page breakdown looks like this:
 
 
