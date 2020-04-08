@@ -13,6 +13,7 @@ Description
 ```
 DATABASE=mongodb://localhost/yourDatabaseName
 PORT=8000
+JWT_SECRET=secret
 ```
 * npm start to start the local server
 
