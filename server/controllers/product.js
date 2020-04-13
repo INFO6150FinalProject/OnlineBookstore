@@ -1,10 +1,10 @@
-const Product = require('../models/product');
-const formidable = require('formidable');
-const _ = require('lodash');
-const fs = require('fs');
+const Product = require("../models/product");
+const formidable = require("formidable");
+const _ = require("lodash");
+const fs = require("fs");
 const {
     errorHandler
-} = require('../helpers/dbErrorHandler');
+} = require("../helpers/dbErrorHandler");
 
 
 exports.productById = (req, res, next, id) => {
@@ -155,13 +155,13 @@ exports.update = (req, res) => {
  * by arrival: /products?sortBy=createdAt&order=desc&limit=4
  */
 exports.list = (req, res) => {
-    let order = req.query.order ? req.query.order : 'asc';
-    let sortBy = req.query.sortBy ? req.query.sortBy : '_id';
-    let limit = req.query.limit ? parseInt(req.query.limit) : '6';
+    let order = req.query.order ? req.query.order : "asc";
+    let sortBy = req.query.sortBy ? req.query.sortBy : "_id";
+    let limit = req.query.limit ? parseInt(req.query.limit) : "6";
 
     Product.find()
         .select("-photo")
-        .populate('category')
+        .populate("category")
         .sort([
             [sortBy, order]
         ])
@@ -184,7 +184,7 @@ exports.list = (req, res) => {
  * other products with same category will be returned
  */
 exports.listRelated = (req, res) => {
-    let limit = req.query.limit ? parseInt(req.query.limit) : '6';
+    let limit = req.query.limit ? parseInt(req.query.limit) : "6";
 
     Product.find({
             _id: {
@@ -193,7 +193,7 @@ exports.listRelated = (req, res) => {
             category: req.product.category
         })
         .limit(limit)
-        .populate('category', '_id name')
+        .populate("category", "_id name")
         .exec((err, products) => {
             if (err) {
                 return res.json({
@@ -272,7 +272,7 @@ exports.listBySearch = (req, res) => {
 
 exports.photo = (req, res, next) => {
     if(req.product.photo.data) {
-        res.set('Content-Type', req.product.photo.contentType);
+        res.set("Content-Type", req.product.photo.contentType);
         return res.send(req.product.photo.data);
     }
     next();

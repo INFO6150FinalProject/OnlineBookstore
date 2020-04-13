@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const {
     ObjectId
 } = mongoose.Schema;
@@ -23,7 +23,7 @@ const productSchema = new mongoose.Schema({
     },
     category: {
         type: ObjectId,
-        refer: 'Category',
+        refer: "Category",
         required: true
     },
     quantity: {

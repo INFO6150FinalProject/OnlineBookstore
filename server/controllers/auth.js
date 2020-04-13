@@ -1,7 +1,7 @@
-const User = require('../models/user');
-const jwt = require('jsonwebtoken'); // generate token
-const expressJwt = require('express-jwt'); // authorizaton
-const { errorHandler } = require('../helpers/dbErrorHandler');
+const User = require("../models/user");
+const jwt = require("jsonwebtoken"); // generate token
+const expressJwt = require("express-jwt"); // authorizaton
+const { errorHandler } = require("../helpers/dbErrorHandler");
 
 exports.signup = (req, res) => {
     const user = new User(req.body);
@@ -40,8 +40,8 @@ exports.signin = (req, res) => {
             }
             // 2. generate jwt with user id and secret
             const token = jwt.sign({_id: user._id}, process.env.JWT_SECRET);
-            // 3. persist token as 't' in cookie with expiry date
-            res.cookie('t', token, {expire: new Date() + 9999})
+            // 3. persist token as "t" in cookie with expiry date
+            res.cookie("t", token, {expire: new Date() + 9999})
             // 4. return response with user and token to frontend client
             const{ _id, name, email, role } = user;
             return res.json({
@@ -53,7 +53,7 @@ exports.signin = (req, res) => {
 };
 
 exports.signout = (req, res) => {
-    res.clearCookie('t');
+    res.clearCookie("t");
     res.json({
         message: "you have signed out"
     })
