@@ -3,7 +3,7 @@ import Layout from './Layout';
 import { getProducts } from './apiCore';
 import Card from './Card';
 import Search from './Search';
-
+import '.././styles.css'
 
 const Home = () => {
     const [productsBySell, setProductsBySell] = useState([]);
@@ -38,24 +38,24 @@ const Home = () => {
 
     return (
         <Layout
-            title="FullStack React Node MongoDB Ecommerce App"
-            description="Node React E-commerce App"
+            title="New Chapter: your one-stop online bookstore"
+            description="Find your books every week"
             className="container-fluid"
         >
             <Search />
-            <h2 className="mb-4">New Arrivals</h2>
+            <h2 className="mb-4 text-center">New Arrivals</h2>
             <div className="row">
                 {productsByArrival.map((product, i) => (
-                    <div key={i} className="col-4 mb-3">
+                    <div key={i} className="col-3 mb-3">
                         <Card product={product} />
                     </div>
                 ))}
             </div>
 
-            <h2 className="mb-4">Best Sellers</h2>
+            <h2 className="mb-4 text-center">Best Sellers</h2>
             <div className="row">
                 {productsBySell.map((product, i) => (
-                    <div key={i} className="col-4 mb-3">
+                    <div key={i} className="col-3 mb-3">
                         <Card product={product} />
                     </div>
                 ))}

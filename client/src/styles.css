@@ -28,7 +28,7 @@
   */
  
  .name {
-     background: indigo;
+     background: green;
      color: #fff;
      font-weight: bold;
  }
@@ -85,10 +85,11 @@
 
 .jumbotron {
     width: 30wh;
-    height: 30vh;
+    height: 60vh;
     color: #fff;
-    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-    background-size: 400% 400%;
+    background-image: url(./img/slide1.jpg);
+    background-attachment: fixed;
+    background-size: cover;
     -webkit-animation: Gradient 15s ease infinite;
     -moz-animation: Gradient 15s ease infinite;
     animation: Gradient 15s ease infinite;
