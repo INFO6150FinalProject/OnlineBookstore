@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import Layout from './Layout';
-import Card from './Card';
+import React, { useState, useEffect } from "react";
+import Layout from "./Layout";
+import Card from "./Card";
 import { getCategories, getFilteredProducts } from "./apiCore";
 import Checkbox from "./Checkbox";
 import RadioBox from "./RadioBox";
 import { prices } from "./fixedPrices";
-
 
 const Shop = () => {
     const [myFilters, setMyFilters] = useState({
@@ -16,7 +15,6 @@ const Shop = () => {
     const [limit, setLimit] = useState(6);
     const [skip, setSkip] = useState(0);
     const [size, setSize] = useState(0);
-
     const [filteredResults, setFilteredResults] = useState([]);
 
     const init = () => {
@@ -27,39 +25,6 @@ const Shop = () => {
                 setCategories(data);
             }
         });
-    };
-
-
-
-    useEffect(() => {
-        init();
-        loadFilteredResults(skip, limit, myFilters.filters);
-    }, []);
-
-    const handleFilters = (filters, filterBy) => {
-        // console.log("SHOP", filters, filterBy);
-        const newFilters = { ...myFilters };
-        newFilters.filters[filterBy] = filters;
-
-        if (filterBy === "price") {
-            let priceValues = handlePrice(filters);
-            newFilters.filters[filterBy] = priceValues;
-        }
-        loadFilteredResults(myFilters.filters);
-        setMyFilters(newFilters);
-    };
-
-
-    const handlePrice = value => {
-        const data = prices;
-        let array = [];
-
-        for (let key in data) {
-            if (data[key]._id === parseInt(value)) {
-                array = data[key].array;
-            }
-        }
-        return array;
     };
 
     const loadFilteredResults = newFilters => {
@@ -89,7 +54,6 @@ const Shop = () => {
         });
     };
 
-
     const loadMoreButton = () => {
         return (
             size > 0 &&
@@ -101,6 +65,35 @@ const Shop = () => {
         );
     };
 
+    useEffect(() => {
+        init();
+        loadFilteredResults(skip, limit, myFilters.filters);
+    }, []);
+
+    const handleFilters = (filters, filterBy) => {
+        // console.log("SHOP", filters, filterBy);
+        const newFilters = { ...myFilters };
+        newFilters.filters[filterBy] = filters;
+
+        if (filterBy === "price") {
+            let priceValues = handlePrice(filters);
+            newFilters.filters[filterBy] = priceValues;
+        }
+        loadFilteredResults(myFilters.filters);
+        setMyFilters(newFilters);
+    };
+
+    const handlePrice = value => {
+        const data = prices;
+        let array = [];
+
+        for (let key in data) {
+            if (data[key]._id === parseInt(value)) {
+                array = data[key].array;
+            }
+        }
+        return array;
+    };
 
     return (
         <Layout
@@ -116,7 +109,7 @@ const Shop = () => {
                             categories={categories}
                             handleFilters={filters =>
                                 handleFilters(filters, "category")
-                         }
+                            }
                         />
                     </ul>
 
@@ -137,7 +130,7 @@ const Shop = () => {
                         {filteredResults.map((product, i) => (
                             <div key={i} className="col-4 mb-3">
                                 <Card product={product} />
-                         </div>
+                            </div>
                         ))}
                     </div>
                     <hr />
@@ -146,7 +139,6 @@ const Shop = () => {
             </div>
         </Layout>
     );
-
 };
 
 export default Shop;

@@ -66,17 +66,14 @@ const Search = () => {
                 <h2 className="mt-4 mb-4">
                     {searchMessage(searched, results)}
                 </h2>
-
                 <div className="row">
                     {results.map((product, i) => (
-                        // <div className="col-4 mb-3">
-                            <Card key={i} product={product} />
-                        // </div>
+                        <Card key={i} product={product} />
                     ))}
                 </div>
             </div>
         );
-    };  
+    };
 
     const searchForm = () => (
         <form onSubmit={searchSubmit}>

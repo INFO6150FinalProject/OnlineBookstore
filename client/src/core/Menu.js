@@ -1,5 +1,5 @@
-import React,{Fragment} from 'react';
-import { Link, withRouter } from "react-router-dom"; 
+import React, { Fragment } from "react";
+import { Link, withRouter } from "react-router-dom";
 import { signout, isAuthenticated } from "../auth";
 import { itemTotal } from "./cartHelpers";
 
@@ -13,28 +13,28 @@ const isActive = (history, path) => {
 
 const Menu = ({ history }) => (
     <div>
-    <ul className="nav nav-tabs bg-dark">
-        <li className="nav-item">
-            <Link
-                className="nav-link"
-                style={isActive(history, "/")}
-                to="/"
-            >
-                Home
-            </Link>
-        </li>
+        <ul className="nav nav-tabs bg-primary">
+            <li className="nav-item">
+                <Link
+                    className="nav-link"
+                    style={isActive(history, "/")}
+                    to="/"
+                >
+                    Home
+                </Link>
+            </li>
 
-        <li className="nav-item">
-            <Link
-                className="nav-link"
-                style={isActive(history, "/shop")}
-                to="/shop"
-            >
-                Shop
-            </Link>
-        </li>
-        
-        <li className="nav-item">
+            <li className="nav-item">
+                <Link
+                    className="nav-link"
+                    style={isActive(history, "/shop")}
+                    to="/shop"
+                >
+                    Shop
+                </Link>
+            </li>
+
+            <li className="nav-item">
                 <Link
                     className="nav-link"
                     style={isActive(history, "/cart")}
@@ -47,7 +47,7 @@ const Menu = ({ history }) => (
                 </Link>
             </li>
 
-        {isAuthenticated() && isAuthenticated().user.role === 0 && (
+            {isAuthenticated() && isAuthenticated().user.role === 0 && (
                 <li className="nav-item">
                     <Link
                         className="nav-link"
@@ -71,15 +71,7 @@ const Menu = ({ history }) => (
                 </li>
             )}
 
-
-
-
-
-
-
-
-
-        {!isAuthenticated() && (
+            {!isAuthenticated() && (
                 <Fragment>
                     <li className="nav-item">
                         <Link
@@ -103,11 +95,7 @@ const Menu = ({ history }) => (
                 </Fragment>
             )}
 
-
-
-
-
-{isAuthenticated() && (
+            {isAuthenticated() && (
                 <li className="nav-item">
                     <span
                         className="nav-link"
@@ -122,10 +110,8 @@ const Menu = ({ history }) => (
                     </span>
                 </li>
             )}
-
         </ul>
     </div>
-
-            );
+);
 
 export default withRouter(Menu);
