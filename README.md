@@ -1,11 +1,13 @@
 # OnlineBookstore
 Description
-
+front-end: Reactjs, bootstrap
+back-end: Node.js, Express, Restful API, braintree, mongodb, mongoose, jwt(jsonwebtoken)
 ## Getting Started
 
 ### To get the Node server running locally:
 
 * Install MongoDB Community Edition (instructions) and run it by executing mongod
+* Sign up for a Braintree account and fill information in .env file
 * Clone this repo
 * Navigate to server directory
 * npm install to install all required dependencies
@@ -54,9 +56,15 @@ BRAINTREE_PRIVATE_KEY=
 
 
 ### General functionality:
-* Sign Up
-* Log In
-* Display Product
-### The general page breakdown looks like this:
+* Home (New Arrivals, Best Sellers)
+* Search for books with filters
+* List books with filters
+* Books details and related books
+* Cart
+* Checkout with Braintree
+* Order history
+* Login / Register with jwt
+* Admin add book categories, add books
+* Profile (Buyer)
 
 

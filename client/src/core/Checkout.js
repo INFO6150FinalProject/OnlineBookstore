@@ -1,12 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { getProducts, getBraintreeClientToken } from "./apiCore";
+import {
+    getProducts,
+    getBraintreeClientToken,
+    processPayment
+} from "./apiCore";
+import { emptyCart } from "./cartHelpers";
 import Card from "./Card";
 import { isAuthenticated } from "../auth";
 import { Link } from "react-router-dom";
+import "braintree-web";
 import DropIn from "braintree-web-drop-in-react";
 
 const Checkout = ({ products }) => {
     const [data, setData] = useState({
+        loading: false,
         success: false,
         clientToken: null,
         error: "",
@@ -22,7 +29,7 @@ const Checkout = ({ products }) => {
             if (data.error) {
                 setData({ ...data, error: data.error });
             } else {
-                setData({ ...data, clientToken: data.clientToken });
+                setData({ clientToken: data.clientToken });
             }
         });
     };
@@ -48,24 +55,45 @@ const Checkout = ({ products }) => {
     };
 
     const buy = () => {
+        setData({ loading: true });
         // send the nonce to your server
         // nonce = data.instance.requestPaymentMethod()
         let nonce;
         let getNonce = data.instance
             .requestPaymentMethod()
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 nonce = data.nonce;
                 // once you have nonce (card type, card number) send nonce as 'paymentMethodNonce'
                 // and also total to be charged
-                console.log(
-                    "send nonce and total to process: ",
-                    nonce,
-                    getTotal(products)
-                );
+                // console.log(
+                //     "send nonce and total to process: ",
+                //     nonce,
+                //     getTotal(products)
+                // );
+                const paymentData = {
+                    paymentMethodNonce: nonce,
+                    amount: getTotal(products)
+                };
+
+                processPayment(userId, token, paymentData)
+                    .then(response => {
+                        console.log(response);
+                        setData({ ...data, success: response.success });
+                        emptyCart(() => {
+                            console.log("payment success and empty cart");
+                            setData({ loading: false });
+                        });
+                        // empty cart
+                        // create order
+                    })
+                    .catch(error => {
+                        console.log(error);
+                        setData({ loading: false });
+                    });
             })
             .catch(error => {
-                console.log("dropin error: ", error);
+                // console.log("dropin error: ", error);
                 setData({ ...data, error: error.message });
             });
     };
@@ -76,12 +104,15 @@ const Checkout = ({ products }) => {
                 <div>
                     <DropIn
                         options={{
-                            authorization: data.clientToken
+                            authorization: data.clientToken,
+                            paypal: {
+                                flow: "vault"
+                            }
                         }}
                         onInstance={instance => (data.instance = instance)}
                     />
-                    <button onClick={buy} className="btn btn-success">
-                        Continue to Checkout
+                    <button onClick={buy} className="btn btn-success btn-block">
+                        Pay
                     </button>
                 </div>
             ) : null}
@@ -97,9 +128,23 @@ const Checkout = ({ products }) => {
         </div>
     );
 
+    const showSuccess = success => (
+        <div
+            className="alert alert-info"
+            style={{ display: success ? "" : "none" }}
+        >
+            Thanks! Your payment was successful!
+        </div>
+    );
+
+    const showLoading = loading =>
+        loading && <h2 className="text-danger">Loading...</h2>;
+
     return (
         <div>
             <h2>Total: ${getTotal()}</h2>
+            {showLoading(data.loading)}
+            {showSuccess(data.success)}
             {showError(data.error)}
             {showCheckout()}
         </div>
