@@ -14,6 +14,9 @@ Description
 DATABASE=mongodb://localhost/yourDatabaseName
 PORT=8000
 JWT_SECRET=secret
+BRAINTREE_MERCHANT_ID=
+BRAINTREE_PUBLIC_KEY=
+BRAINTREE_PRIVATE_KEY=
 ```
 * npm start to start the local server
 
