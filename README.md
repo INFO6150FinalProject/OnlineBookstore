@@ -2,6 +2,14 @@
 Description
 front-end: Reactjs, bootstrap
 back-end: Node.js, Express, Restful API, braintree, mongodb, mongoose, jwt(jsonwebtoken)
+## Team Information
+
+| Name | Email Address                    |
+| --------  | ---------------------- |
+| Yezhi Miao |  miao.ye@husky.neu.edu. |
+| Gaurav Lohani | lohani.g@husky.neu.edu  |
+| Rachit Agrawal | agrawal.rac@husky.neu.edu |
+| Sihan Zhao | zhao.sihan@husky.neu.edu |
 ## Getting Started
 
 ### To get the Node server running locally:
