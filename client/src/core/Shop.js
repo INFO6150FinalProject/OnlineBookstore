@@ -97,10 +97,14 @@ const Shop = () => {
 
     return (
         <Layout
-            title="Shop Page"
-            description="Search and find books of your choice"
+            title=""
+            description=""
             className="container-fluid"
         >
+            <div className="jumbotron slide2">
+                <h2>New Chapter Bookstore</h2>
+                <p className="lead">Bring out New Chapter of Your Life</p>
+            </div>
             <div className="row">
                 <div className="col-4">
                     <h4>Filter by categories</h4>

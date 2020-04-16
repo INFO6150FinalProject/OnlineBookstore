@@ -7,6 +7,12 @@
 .nav :hover {
     border-radius: 0px;
 }
+.card2{
+    width: 100%;
+}
+.checkout {
+    width: 80%;
+}
 
 /* cart badge */
 
@@ -16,14 +22,14 @@
     padding: 2px;
     font-size: 12px;
     font-style: italic;
-    background: #000;
+    background: 35614a;
 }
 /**
  * single product page - product name
  */
 
 .name {
-    background: indigo;
+    background: #35614a;
     color: #fff;
     font-weight: bold;
 }
@@ -46,6 +52,15 @@
 }
 .black-5 {
     background: #b3b3b3;
+}
+
+.addToCart {
+    background-color: #3d6db5;
+    color: #fff;
+}
+.cart {
+    width: 1000px;
+    margin: 0 auto;
 }
 
 /**
@@ -71,13 +86,30 @@
  */
 
 .jumbotron {
-    height: 180px;
+    height: 30rem;
     color: #fff;
-    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-    background-size: 400% 400%;
-    -webkit-animation: Gradient 15s ease infinite;
-    -moz-animation: Gradient 15s ease infinite;
-    animation: Gradient 15s ease infinite;
+    padding-top: 15%;
+    padding-left: 7%;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+.slide1 {
+    background: url("./img/slide1.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+}
+.slide2 {
+    background: url("./img/slide3.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+}
+.menu {
+    background-color: #35614a;
+    padding: 0.6%;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-size: 1.3rem;
+}
+.campaign {
+    font-family: Cambria, Cochin;
 }
 
 @-webkit-keyframes Gradient {

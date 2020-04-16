@@ -36,24 +36,28 @@ const Home = () => {
 
     return (
         <Layout
-            title="Home Page"
-            description="Node React E-commerce App"
+            title="New Chapter Online Bookstore"
+            description="Your online one-stop bookstore, checkout our new books every day!"
             className="container-fluid"
         >
+            <div className="jumbotron slide1">
+                <h2>New Chapter Bookstore</h2>
+                <p className="lead">Your online one-stop bookstore, checkout our new books every day!</p>
+            </div>
             <Search />
-            <h2 className="mb-4">New Arrivals</h2>
+            <h2 className="mb-4 text-center campaign">New Arrivals</h2>
             <div className="row">
                 {productsByArrival.map((product, i) => (
-                    <div key={i} className="col-4 mb-3">
+                    <div key={i} className="col-3 mb-3">
                         <Card product={product} />
                     </div>
                 ))}
             </div>
 
-            <h2 className="mb-4">Best Sellers</h2>
+            <h2 className="mb-4 text-center campaign">Best Sellers</h2>
             <div className="row">
                 {productsBySell.map((product, i) => (
-                    <div key={i} className="col-4 mb-3">
+                    <div key={i} className="col-3 mb-3">
                         <Card product={product} />
                     </div>
                 ))}

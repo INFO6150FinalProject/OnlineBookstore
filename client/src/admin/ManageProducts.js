@@ -39,36 +39,43 @@ const ManageProducts = () => {
             description="Perform CRUD on products"
             className="container-fluid"
         >
-            <div className="row">
-                <div className="col-12">
-                    <h2 className="text-center">
-                        Total {products.length} products
-                    </h2>
-                    <hr />
-                    <ul className="list-group">
-                        {products.map((p, i) => (
-                            <li
-                                key={i}
-                                className="list-group-item d-flex justify-content-between align-items-center"
-                            >
-                                <strong>{p.name}</strong>
+            <h1>Total {products.length} products</h1>
+            <br></br>
+            <table className="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Update</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {products.map((p, i) => (
+                        <tr key={i}>
+                            <td scope="col">{p.name}</td>
+                            <td scope="col">{p.price}</td>
+                            <td scope="col">${p.quantity}</td>
+                            <td scope="col">
                                 <Link to={`/admin/product/update/${p._id}`}>
                                     <span className="badge badge-warning badge-pill">
                                         Update
                                     </span>
                                 </Link>
-                                <span
+                            </td>
+                            <td>
+                            <span
                                     onClick={() => destroy(p._id)}
                                     className="badge badge-danger badge-pill"
                                 >
                                     Delete
                                 </span>
-                            </li>
-                        ))}
-                    </ul>
-                    <br />
-                </div>
-            </div>
+                            </td>
+                        </tr>
+                        ))} 
+                </tbody>
+            </table>
         </Layout>
     );
 };

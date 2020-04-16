@@ -98,6 +98,7 @@ const Orders = () => {
                 user.name
             }, you can manage all the orders here`}
         >
+            
             <div className="p-5">
             {showOrdersLength()}
             <table className="table">
@@ -116,7 +117,7 @@ const Orders = () => {
                 {orders.map((o, oIndex) => {
                         return (
                             <tbody>
-                            <tr className="mt-5 table-info" key={oIndex}>
+                            <tr className="mt-5 table-success" key={oIndex}>
                                 <td scope="row">{o._id}</td>
                                 <td>{o.transaction_id}</td>
                                 <td>{moment(o.createdAt).fromNow()}</td>

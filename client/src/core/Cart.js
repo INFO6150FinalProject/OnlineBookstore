@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Layout from "./Layout";
 import { getCart } from "./cartHelpers";
-import Card from "./Card";
+import Card2 from "./Card2";
 import Checkout from "./Checkout";
 
 const Cart = () => {
@@ -18,7 +18,7 @@ const Cart = () => {
                 <h2>Your cart has {`${items.length}`} items</h2>
                 <hr />
                 {items.map((product, i) => (
-                    <Card
+                    <Card2
                         key={i}
                         product={product}
                         showAddToCartButton={false}
@@ -42,14 +42,13 @@ const Cart = () => {
             description="Manage your cart items. Add remove checkout or continue shopping."
             className="container-fluid"
         >
-            <div className="row">
-                <div className="col-6">
+            <div className="cart">
+                <div className="row">
                     {items.length > 0 ? showItems(items) : noItemsMessage()}
                 </div>
-
-                <div className="col-6">
-                    <h2 className="mb-4">Your cart summary</h2>
-                    <hr />
+                <hr></hr>
+                <h2 className="">Your cart summary</h2>
+                <div className="checkout">
                     <Checkout products={items} />
                 </div>
             </div>

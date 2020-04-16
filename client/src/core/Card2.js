@@ -66,9 +66,9 @@ const Card = ({
 
     const showStock = quantity => {
         return quantity > 0 ? (
-            <span className="badge badge-primary badge-pill">In Stock</span>
+            <span className="badge badge-primary badge-pill float-right">In Stock</span>
         ) : (
-            <span className="badge badge-primary badge-pill">Out of Stock</span>
+            <span className="badge badge-primary badge-pill float-right">Out of Stock</span>
         );
     };
 
@@ -102,26 +102,36 @@ const Card = ({
     };
 
     return (
-        <div className="card">
+        <div className="card2">
             {/* <div className="card-header name"></div> */}
-            <div className="card-body">
+            <div className="card-body container">
                 {shouldRedirect(redirect)}
-                <Link to={`/product/${product._id}`} className="mr-2">
-                    <ShowImage item={product} url="product" />
-                </Link>
-                <strong>{product.name}</strong> {showStock(product.quantity)}
-                <p>
-                    by {product.description.substring(0, 100)}
-                </p>
-                <p>${product.price}</p>         
+                <div className="row pl-4">
+                    <div className="col-4">
+                        <Link to={`/product/${product._id}`} className="mr-2">
+                            <ShowImage item={product} url="product" />
+                        </Link>
+                    </div>
+                    <div className="col-8">
+                       {showStock(product.quantity)}   
+                        <h3>{product.name}</h3> 
+                        <p>
+                            by {product.description.substring(0, 100)}
+                        </p>
+                        <p>${product.price}</p>  
+                        <p>Category: {product.category && product.category.name}</p>
+                        <p>Added on {moment(product.createdAt).fromNow()}</p>
+                           
 
-                {/* {showViewButton(showViewProductButton)} */}
+                        {/* {showViewButton(showViewProductButton)} */}
 
-                {showAddToCart(showAddToCartButton)}
+                        {showAddToCart(showAddToCartButton)}
 
-                {showRemoveButton(showRemoveProductButton)}
+                        {showRemoveButton(showRemoveProductButton)}
 
-                {showCartUpdateOptions(cartUpdate)}
+                        {showCartUpdateOptions(cartUpdate)}
+                    </div>
+                </div>       
             </div>
         </div>
     );

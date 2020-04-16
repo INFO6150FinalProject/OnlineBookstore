@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Layout from "./Layout";
 import { read, listRelated } from "./apiCore";
 import Card from "./Card";
+import Card2 from "./Card2";
 
 const Product = props => {
     const [product, setProduct] = useState({});
@@ -41,21 +42,20 @@ const Product = props => {
             }
             className="container-fluid"
         >
+            <h4 className="pl-4">Product Detail</h4>
             <div className="row">
-                <div className="col-8">
                     {product && product.description && (
-                        <Card product={product} showViewProductButton={false} />
+                        <Card2 product={product} showViewProductButton={false} />
                     )}
-                </div>
-
-                <div className="col-4">
-                    <h4>Related products</h4>
+            </div>
+            <h4 className="pl-4">Related products</h4>
+            <div className="row pl-4">
+                    
                     {relatedProduct.map((p, i) => (
                         <div className="mb-3">
                             <Card key={i} product={p} />
                         </div>
                     ))}
-                </div>
             </div>
         </Layout>
     );

@@ -10,11 +10,15 @@ const Layout = ({
 }) => (
     <div>
         <Menu />
-        <div className="jumbotron">
+        {/* <div className="jumbotron">
             <h2>{title}</h2>
             <p className="lead">{description}</p>
-        </div>
+        </div> */}
+        <br></br><br></br><br></br><br></br>
         <div className={className}>{children}</div>
+        <footer class="footer-container container-fluid p-5 bg-light mt-4">
+            <p className="text-right">Copy Right @ New Chapter Inc.</p>
+        </footer>
     </div>
 );
 
